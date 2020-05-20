@@ -134,7 +134,7 @@ clear_progress_bar() {
 print_bar_text() {
     local percentage=$1
     local cols=$(tput cols)
-    let bar_size=$cols-17
+    let bar_size=$cols-19
 
     local color="${COLOR_FG}${COLOR_BG}"
     if [ "$PROGRESS_BLOCKED" = "true" ]; then
