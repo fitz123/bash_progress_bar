@@ -142,7 +142,8 @@ print_bar_text() {
     fi
 
     # Prepare progress bar
-    let complete_size=($bar_size*$percentage)/100
+    #let complete_size=($bar_size*$percentage)/100
+    complete_size=$(awk -v b="$bar_size" -v p="$percentage" 'BEGIN { printf("%.0f\n",(b*p)/100); }')
     let remainder_size=$bar_size-$complete_size
     progress_bar=$(echo -ne "["; echo -en "${color}"; printf_new "#" $complete_size; echo -en "${RESTORE_FG}${RESTORE_BG}"; printf_new "." $remainder_size; echo -ne "]");
 
